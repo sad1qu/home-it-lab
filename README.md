@@ -13,3 +13,17 @@ After refreshing the user session, access was restored following the principle o
 
 **Outcome:**  
 User successfully accessed the file without granting excessive permissions.
+
+## Scenario 2: File cannot be deleted
+
+**Problem:**  
+User was able to read a file but could not delete it.
+
+**Investigation:**  
+Checked file permissions and confirmed that deletion was blocked due to missing write permissions on the parent directory.
+
+**Resolution:**  
+Assigned the directory to a dedicated group and granted write permissions to that group only.
+
+**Outcome:**  
+User successfully deleted the file while maintaining proper access control.
