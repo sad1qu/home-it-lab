@@ -27,3 +27,18 @@ Assigned the directory to a dedicated group and granted write permissions to tha
 
 **Outcome:**  
 User successfully deleted the file while maintaining proper access control.
+
+## Scenario 3: High CPU usage
+
+**Problem:**  
+System performance was reported as slow.
+
+**Investigation:**  
+Used the `top` command to analyze CPU and memory usage.  
+Identified a process consuming nearly 100% CPU.
+
+**Resolution:**  
+Terminated the process using `kill` after confirming it was not critical.
+
+**Outcome:**  
+CPU usage returned to normal levels and system performance stabilized.
