@@ -46,7 +46,15 @@ Used the `top` command to analyze CPU and memory usage.
 Identified a process consuming nearly 100% CPU.
 
 **Resolution:**  
-Terminated the process using `kill` after confirming it was not critical.
+Identified the responsible process and terminated it after confirming it was not critical to system operation.
 
 **Outcome:**  
 CPU usage returned to normal levels and system performance stabilized.
+
+## Skills demonstrated
+
+- Linux file permissions (rwx)
+- User and group management
+- Principle of least privilege
+- Process monitoring and termination
+- Structured troubleshooting approach
