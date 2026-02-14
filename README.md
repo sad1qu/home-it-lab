@@ -1,3 +1,11 @@
+# Home IT Lab
+
+This repository documents practical Linux-based IT support scenarios focused on
+permissions, access control, and system diagnostics.
+
+The goal is to demonstrate structured troubleshooting and security-aware thinking.
+
+
 ## Scenario 1: User cannot access a file
 
 **Problem:**  
