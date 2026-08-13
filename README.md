@@ -1,60 +1,40 @@
-# Home IT Lab
+# 🖥️ Home IT Lab & Container Infrastructure
 
-This repository documents practical Linux-based IT support scenarios focused on
-permissions, access control, and system diagnostics.
+A self-hosted home lab environment built on **Ubuntu Server**, designed for testing, container orchestration, network management, and system observability.
 
-The goal is to demonstrate structured troubleshooting and security-aware thinking.
+---
 
+## 📐 Architecture & Key Features
 
-## Scenario 1: User cannot access a file
+* **OS & System Administration:** Configured and managed **Ubuntu Server (CLI)**, including physical drive mounting and file system management.
+* **Container Orchestration:** Deployed and managed a multi-service stack using **Docker** and **Docker Compose**.
+* **Secure Remote Access:** Configured **Tailscale (Mesh Overlay VPN)** to securely connect to the internal network from external devices without opening public ports.
+* **Network & DNS Optimization:** Identified and resolved internal DNS query rate limits and network latency by configuring custom subnets (`/24`) and migrating container resolvers to **Cloudflare (1.1.1.1)**.
+* **Monitoring & Observability:** 
+  * **Uptime Kuma:** Automated uptime and status monitoring for hosted services.
+  * **Scrutiny:** Hardware disk health tracking via **S.M.A.R.T.** data.
+  * **Glances / System Tools:** Real-time CPU, RAM, and system resource monitoring.
+* **Lifecycle & Maintenance:** Automated image updates using **Watchtower**, managed containers/volumes via **Portainer**, and performed system hygiene (`docker system prune`).
 
-**Problem:**  
-User reported lack of access to a file.
+---
 
-**Investigation:**  
-Verified file existence and checked permissions. Initially, the file was readable by all users.
-Access was then restricted to reproduce the issue.
+## 🛠️ Tech Stack & Tools
 
-**Resolution:**  
-Created a dedicated group, assigned the file to that group, and added the user to it.
-After refreshing the user session, access was restored following the principle of least privilege.
+* **OS:** Linux Ubuntu Server (CLI)
+* **Containers:** Docker, Docker Compose, Portainer, Watchtower
+* **Networking & Security:** TCP/IP, DNS, Tailscale VPN
+* **Monitoring:** Uptime Kuma, Scrutiny (S.M.A.R.T.), Glances
+* **CLI Tools:** Bash, `top`, `docker inspect`, `ipconfig/ifconfig`
 
-**Outcome:**  
-User successfully accessed the file without granting excessive permissions.
+---
 
-## Scenario 2: File cannot be deleted
+## 🔍 Key Troubleshooting Scenarios Solved
 
-**Problem:**  
-User was able to read a file but could not delete it.
+1. **DNS Resolution Latency:** Resolved container-level DNS timeouts by updating docker network configurations and assigning Cloudflare public resolvers.
+2. **Drive Mounting & Health:** Successfully mounted secondary storage drives in Linux and integrated automated S.M.A.R.T. monitoring to detect disk degradation early.
+3. **Resource Management:** Monitored CPU/RAM usage spikes and optimized container resources using Linux CLI diagnostic utilities (`top`, `Glances`).
 
-**Investigation:**  
-Checked file permissions and confirmed that deletion was blocked due to missing write permissions on the parent directory.
+---
 
-**Resolution:**  
-Assigned the directory to a dedicated group and granted write permissions to that group only.
-
-**Outcome:**  
-User successfully deleted the file while maintaining proper access control.
-
-## Scenario 3: High CPU usage
-
-**Problem:**  
-System performance was reported as slow.
-
-**Investigation:**  
-Used the `top` command to analyze CPU and memory usage.  
-Identified a process consuming nearly 100% CPU.
-
-**Resolution:**  
-Identified the responsible process and terminated it after confirming it was not critical to system operation.
-
-**Outcome:**  
-CPU usage returned to normal levels and system performance stabilized.
-
-## Skills demonstrated
-
-- Linux file permissions (rwx)
-- User and group management
-- Principle of least privilege
-- Process monitoring and termination
-- Structured troubleshooting approach
+## 📝 Disclaimer
+*This lab is strictly used for educational, testing, and skill-building purposes in a controlled environment.*
